@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: white;
+    background: linear-gradient(85deg, rgb(3, 3, 26), rgb(8, 90, 78));
+}
+.wrapper{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    width :100%;
+    justify-content: center;
+    align-self: center;
+}
+.note-container{
+    width: 70%;
+    margin: auto;
+    box-shadow:  2px 3px 7px  rgb(8, 90, 78);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(1, 14, 37);
+}
+
+
+
+i{
+   padding: 10px;
+}
+.note-cicle{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 8px rgb(38, 27, 58);
+   
+}
+
+.todo-add{
+    background-color: rgba(5, 59, 66, 0.753);
+
+    padding: 10px;
+}
+
+.note-title{
+    display: flex;
+    gap: 15rem;
+    align-items: center;
+}
+ .note-description{
+    font-size: 10px;
+    /* position: absolute; */
+    text-align: start;
+    margin-left: 3rem;
+
+ }
+
+ .todo-icon{
+    display:flex;
+    flex-direction:column;
+    align-items:end;
+ }
+ .todo-description{
+    word-wrap: break-word;
+    flex-wrap: wrap;
+   font-size: 20px;
+ }
+ .time{
+    margin-right: 5rem;
+ }
+
+
+.btn-todoapp{
+    border: none;
+    color: white;
+}
+
+.todo-footer{
+    text-align:center;
+}
+
+
+@media screen and (max-width: 549px) {
+
+    .note-container{
+        width: 100%;
+        margin: 20px;
+        box-shadow:  2px 3px 7px  rgb(8, 90, 78);
+        padding: 10px;
+        border-radius: 5px;
+     
+
+    }
+    .note-title{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    .time{
+        margin-right: 2rem;
+     }
+
+     .note-description{
+        font-size: 5px;
+        margin-right: 10rem;
+        text-align: start;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+
+     }
+     .todo-description{
+    flex-wrap: wrap;
+    word-wrap: break-word;
+
+        font-size: 15px;
+    }
+    
+
+}
+
+
+@media screen and (max-width: 480px) {
+    .note-container{
+        width: 100%;
+        margin: 20px;
+
+        box-shadow:  2px 3px 7px  rgb(8, 90, 78);
+        border-radius: 5px;
+     
+
+    }
+    .note-description{
+        font-size: 5px;
+        margin-right: 10rem;
+        text-align: start;
+     }
+    .note-title{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .todo-description{
+        font-size: 20px;
+    }
+}

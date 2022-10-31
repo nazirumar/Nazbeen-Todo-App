@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {% endblock %}
+
+{% block body %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <form class="was-validated"  method="post" >
+            {% csrf_token %}
+            <div class="col-12">
+               <div class="form-outline">
+                 <input type="text" name="title" class="form-control is-invalid" id="validationServer03" required />
+                 <label for="validationServer03" class="form-label">Title</label>
+               </div>
+             </div>
+            <div class="mb-3 pb-1">
+              <div class="form-outline">
+                <textarea class="form-control is-valid"  name="description" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                <label for="validationTextarea" class="form-label">Descriptions</label>
+              </div>
+            </div>
+            <div class="form-outline" id="datetimepicker-dateOptions" >
+               <input type="text"  name="created" value="" required id="id_created datetimepickerdateOptions" class="form-control">
+               <label for="datetimepickerdateOptions" class="form-label">
+                 Select Date and Time</label>
+             </div>
+            
+             <label for="id_is_reading"  class='text-dark'>Payment</label>
+            <input type="checkbox" name="is_reading" id="id_is_reading">
+             <div class="modal-footer">
+               <input type="submit" class="btn btn-primary">Submit</input>
+             </div>
+            </form>
+       </div>
+       
+     </div>
+   </div>
+ </div>
+<!-- End Model -->
+
+
+<div class="note-container">
+           
+            <div class="text-center m-3">Todo App   
+               <div class="text-end"> 
+                  <button class="btn-todoapp" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                  <i class="todo-add fas fa-plus " ></i>
+               </button>
+               </div>
+            </div>
+            {%  for todo in todo %}
+   <div class="note-cicle" id="note-cicle">
+      <div class="todo--title">
+         <div class="note-title">
+            <div class="title">
+
+                {{forloop.counter}} - {{todo.title|title}}
+            
+            </div>
+            <div class="time">{{todo.created}}</div>
+         </div>
+
+         <div class="note-description">
+            <div class="todo-description"> &order; 
+         {{todo.description}}</div>
+         </div>
+      </div>
+      <div class="todo-icon">
+         <a href="{% url 'todo-update'  todo.pk %}">
+         <i class="fas fa-calendar-day"></i>
+      </a>
+         {% if todo.is_reading %}
+         <i class="fas fa-check   todo-check"></i>
+         {% else %}
+         <i class="fas fa-times todo-check"></i>
+         {% endif %}
+         <a href="{% url  'todo-delete'   todo.pk %}">
+         <i  style="color: red;" class="far fa-trash-alt"></i>
+      </a>
+      </div>
+   </div>
+   {% endfor %}
+
+   <div class="todo-footer m-3">
+      Nazbeen -------------- Todo App
+   </div>
+</div>
+
+{% endblock %}
