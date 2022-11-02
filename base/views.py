@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from .form import TodoAppForm
@@ -14,7 +15,6 @@ class Index(CreateView):
         form.save()
         print(form)
         return super().form_valid(form)
-
     def get(self, request):
         todo = TodoApp.objects.all()
         context ={
@@ -32,14 +32,17 @@ def todoAppDelete(request, pk):
 
 
 
-class TodoAppUpdate(UpdateView):
-    model = TodoApp
-    fields = '__all__'
-    success_url = '/'
-    template_name = 'todo-update.html'
-
-
-
+def todoappupdate(request, pk):
+    data = get_object_or_404(TodoApp, pk=pk)
+    form = TodoAppForm(request.POST or None, instance=data)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    form = TodoAppForm(instance=data)
+    form.fields['title'].widget.attrs['readonly'] = True
+    context ={'form':form}
+    return render(request, 'todo-update.html', context)
+            
 
 
 class TodoAppDetail(DetailView):
