@@ -8,7 +8,7 @@ class TodoAppForm(forms.ModelForm):
     class Meta:
         model = TodoApp
         fields = '__all__'
-        exclude =('user', )
+        exclude =('user', 'slug',)
         widgets = {
         'created': forms.DateInput(attrs={'type': 'date'}),
     }

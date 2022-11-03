@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -30,7 +30,6 @@ class Index(LoginRequiredMixin, CreateView):
         context['todo'] = self.model.objects.filter(user=self.request.user)
         return context
 
-
 def todoappupdate(request, pk):
     data = get_object_or_404(TodoApp, pk=pk)
     form = TodoAppForm(request.POST or None, instance=data)
@@ -60,17 +59,13 @@ class RegisterPage(FormView):
     def form_valid(self, form):
         user = form.save()
         messages.success(self.request, f' welcome {user.username} !!')
-
         if user is not None:
             login(self.request, user)
         return super(RegisterPage, self).form_valid(form)
-
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('index')
         return super(RegisterPage, self).get(*args, **kwargs)
-
-
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
