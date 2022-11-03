@@ -17,19 +17,19 @@
     });
   })();
 
-let notecicle = document.getElementsByTagName ('note-cicle');
+function TodoTyped() {
+  var typed = new Typed('#typed', {
+    strings: ['Welcome  to <strong>Nazbeen</strong> Todo App', ' ', 'Add Your Todo List to make your life easie'],
+    typeSpeed: 70,
+    backSpeed: 0,
+    fadeOut: true,
+    loop: true
+  });
+5
+}
 
-let reading = document.getElementById("id_is_reading").classList.add('notecicle');
-let readigClass = document.querySelectorAll('.notecicle')
-console.log(readigClass);
-
-let todoCheck = document.querySelectorAll('todo-check');
-console.log(todoCheck.value == true);
-
-// console.log(reading.checked == false);
-// if (reading.checked  == false) {
-//   notecicle.style.backgroundColor='red'
-// }
-// else {
-
-// }
+const btnNew = document.getElementById('btn-new')
+btnNew.onmouseover = () =>
+{
+  TodoTyped()
+};

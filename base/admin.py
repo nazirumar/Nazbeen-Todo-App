@@ -6,3 +6,4 @@ from base.models import TodoApp
 
 
 admin.site.register(TodoApp)
+
